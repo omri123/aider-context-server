@@ -6,6 +6,7 @@
   "publisher": "omribloch",
   "license": "Apache-2.0",
   "homepage": "https://github.com/omri123/aider-context-server",
+  "icon": "images/logo-128.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/omri123/aider-vscode.git"
