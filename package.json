@@ -9,10 +9,10 @@
   "icon": "images/logo-128.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/omri123/aider-vscode.git"
+    "url": "https://github.com/omri123/aider-context-server.git"
   },
   "bugs": {
-    "url": "https://github.com/omri123/aider-vscode/issues"
+    "url": "https://github.com/omri123/aider-context-server/issues"
   },
   "keywords": [
     "gpt",
