@@ -1,26 +1,54 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { getCapabilities, runServer } from './server';
+import { Capability } from './capability';
+import { traceInfo, registerLogger } from './logging';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+let capabilities: Capability[] = [];
+let server: any;
 export function activate(context: vscode.ExtensionContext) {
+	// Setup logging, this is the only part we don't restart when restarting the server, to have a consistent log.
+	const outputChannel = vscode.window.createOutputChannel('Aider', { log: true });
+	context.subscriptions.push(outputChannel, registerLogger(outputChannel));
+	traceInfo('activating aider-context-server');
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "aider-context-server" is now active!');
+	// Restart the server on user request.
+	let disposable = vscode.commands.registerCommand('aider-context-server.restart', () => {
+		// Verify we have all needed configurations.
+		const port = vscode.workspace.getConfiguration('aider-context-server').get<number>('port');
+		if (!port) {
+			vscode.window.showErrorMessage('Failed to get port from configuration');
+			return;
+		}
+		// We restart the capabilities to let the user new chance to authenticate.
+		for (const capability of capabilities) {
+			capability.deactivate();
+		}
+		capabilities = getCapabilities();
+		for (const capability of capabilities) {
+			traceInfo('Activating capability: ', capability.capabilityName);
+			capability.activate();
+		}
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('aider-context-server.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from aider!');
+		// Restart the server.
+		if (server) {
+			server.close((err: any) => {
+				server = runServer(port, capabilities);
+				vscode.window.showInformationMessage('Aider Context Server is running');
+			});
+			return;
+		}
+		server = runServer(port, capabilities);
+		vscode.window.showInformationMessage('Aider Context Server is running');
 	});
 
 	context.subscriptions.push(disposable);
 }
 
 // This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() {
+	for (const capability of capabilities) {
+		capability.deactivate();
+	}
+}
