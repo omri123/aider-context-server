@@ -1,8 +1,26 @@
 {
   "name": "aider-context-server",
   "displayName": "aider",
-  "description": "aider is AI pair programming in your terminal",
+  "description": "Context server for aider - AI pair programming in your terminal",
   "version": "0.0.1",
+  "publisher": "omribloch",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/omri123/aider-context-server",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omri123/aider-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/omri123/aider-vscode/issues"
+  },
+  "keywords": [
+    "gpt",
+    "chatGPT",
+    "assistant",
+    "aider",
+    "gpt4",
+    "agent"
+  ],
   "engines": {
     "vscode": "^1.84.0"
   },
