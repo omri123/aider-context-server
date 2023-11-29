@@ -21,6 +21,13 @@ export function activate(context: vscode.ExtensionContext) {
 			vscode.window.showErrorMessage('Failed to get port from configuration');
 			return;
 		}
+
+		// We don't handle multiple workspaces. It is a bit more complicated to handle and aider itself don't support it.
+		if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 1) {
+			vscode.window.showErrorMessage('Aider Context Server does not support multiple workspaces, close some folders and try again.');
+			return;
+		}
+
 		// We restart the capabilities to let the user new chance to authenticate.
 		for (const capability of capabilities) {
 			capability.deactivate();
