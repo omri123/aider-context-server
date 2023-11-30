@@ -42,12 +42,12 @@ export function activate(context: vscode.ExtensionContext) {
 		if (server) {
 			server.close((err: any) => {
 				server = runServer(port, capabilities);
-				vscode.window.showInformationMessage('Aider Context Server is running');
+				vscode.window.showInformationMessage(`Aider Context Server is running on port ${port}`);
 			});
 			return;
 		}
 		server = runServer(port, capabilities);
-		vscode.window.showInformationMessage('Aider Context Server is running');
+		vscode.window.showInformationMessage(`Aider Context Server is running on port ${port}`);
 	});
 
 	context.subscriptions.push(disposable);
