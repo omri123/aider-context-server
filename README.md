@@ -31,7 +31,7 @@ Using this context server extension, you can add additional context and language
 ## Getting started
 
 - Configure the port number in the extension settings.
-- Install and run aider insider your project directory:
+- Install and run aider inside your project directory:
 
 ```bash
 $ pip install git+https://github.com/omri123/aider@extension-0.1
@@ -89,7 +89,7 @@ to set many options. See `aider --help` for details. You can use `aider.args` to
 Aider supports commands from within the chat, which all start with `/`. Here are some of the most useful in-chat commands:
 
 - `/add <file>`: Add matching files to the chat session.
-- `/show <file>`: Show the contents of a file or github issue.
+- `/show <file>`: Show the content of a file additional context item.
 - `/drop <file>`: Remove matching files from the chat session.
 - `/undo`: Undo the last git commit if it was done by aider.
 - `/diff`: Display the diff of the last aider commit.
@@ -157,7 +157,7 @@ For more information, see the [FAQ](https://aider.chat/docs/faq.html).
 
 ## Relationship with aider project
 
-[aider](https://github.com/paul-gauthier/aider) is the best coding assistant I have met so far. I forked it, extended it and wrapped it in an extension.
+[aider](https://github.com/paul-gauthier/aider) is the best coding assistant I have encountered so far. I forked it, extended it, and wrapped it in an extension.
 You can find my fork of aider [here](https://github.com/omri123/aider). This README is almost a copy of the aider's README.
 
 List of additional features I added to aider itself:
