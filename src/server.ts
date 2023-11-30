@@ -5,6 +5,7 @@ import * as url from 'url';
 import { Capability } from './capability';
 import { GithubIssueCapability } from './capabilities/github';
 import { registerLogger, traceError, traceInfo, traceLog, traceVerbose } from './logging';
+import { ListReferencesCapability } from './capabilities/references';
 
 
 export function runServer(port: number, capabilities: Capability[]) {
@@ -53,11 +54,19 @@ export function runServer(port: number, capabilities: Capability[]) {
         if (method === 'titles') {
             const allTitles: string[] = [];
             for (const capability of capabilities) {
-                const titels = await capability.getTitles();
-                const titleWithCapabilityName = titels.map((title) => {
-                    return capability.capabilityName + '-' + title;
-                });
-                allTitles.push(...titleWithCapabilityName);
+                try {
+                    const titels = await capability.getTitles();
+                    const titleWithCapabilityName = titels.map((title) => {
+                        return capability.capabilityName + '-' + title;
+                    });
+                    allTitles.push(...titleWithCapabilityName);
+                } catch (error) {
+                    if (error instanceof Error) {
+                        traceError(`${capability.capabilityName} failed to get titles: ${error.message}`);
+                    } else {
+                        traceError(`${capability.capabilityName} failed to get titles.`);
+                    }
+                }
             }
             res.write(allTitles.join('\n'));
             res.end();
@@ -85,7 +94,7 @@ export function runServer(port: number, capabilities: Capability[]) {
             return;
         }
         return failure('404 - unknown method');
-    })
+    });
 
     server.listen(port, 'localhost');
     traceInfo('aider server listening on port ', port);
@@ -96,6 +105,7 @@ export function getCapabilities(): Capability[] {
     const capabilities: Capability[] = [];
     // Add your capabilities here
     capabilities.push(new GithubIssueCapability());
+    capabilities.push(new ListReferencesCapability());
 
     return capabilities;
 }

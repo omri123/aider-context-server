@@ -95,7 +95,7 @@ Aider supports commands from within the chat, which all start with `/`. Here are
 - `/diff`: Display the diff of the last aider commit.
 - `/run <command>`: Run a shell command and optionally add the output to the chat.
 - `/help`: Show help about all commands.
-- `/add` and `/show` can work with additional context items, at the moment only github issue is implemented.
+- `/add` and `/show` can work with additional context items, like `\issue-` or `\references-`.
 
 See the [full command docs](https://aider.chat/docs/commands.html) for more information.
 
