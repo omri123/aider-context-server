@@ -167,6 +167,10 @@ List of additional features Added in the extension:
 
 My custom version of aider track the community aider + is able to interact with the extension.
 
+## Limitations
+
+You can ask aider to list reference of any symbol, and to add any issue. The autocomplete show only symbols on file top level, and only issues assigned to you.
+
 ## Roadmap
 
 I have big plans for this project.
