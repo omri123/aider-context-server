@@ -12,7 +12,7 @@ Aider is unique in that it [works well with pre-existing, larger codebases](http
   <img src="images/screencast.gif" alt="aider screencast">
 </p>
 
-Using this context server extension, you can add additional context and language server outcomes into the chat. It works with a custom version of aider, see [Getting started](#getting-started), [Relationship with aider project](#relationship-with-aider-project) and [Roadmap](#roadmap).
+Using this context server extension, you can add additional context and code analysis into the chat. It works with a custom version of aider, see [Getting started](#getting-started), [Relationship with aider project](#relationship-with-aider-project) and [Roadmap](#roadmap).
 
 - [Getting started](#getting-started)
 - [Example chat transcripts](#example-chat-transcripts)
@@ -160,13 +160,12 @@ For more information, see the [FAQ](https://aider.chat/docs/faq.html).
 [aider](https://github.com/paul-gauthier/aider) is the best coding assistant I have encountered so far. I forked it, extended it, and wrapped it in an extension.
 You can find my fork of aider [here](https://github.com/omri123/aider). This README is almost a copy of the aider's README.
 
-List of additional features I added to aider itself:
-
-- Connect to a server and ask for complition/content
-
 List of additional features Added in the extension:
 
 - Add github issue to the chat
+- List references and add to the chat
+
+My custom version of aider track the community aider + is able to interact with the extension.
 
 ## Roadmap
 
