@@ -6,6 +6,7 @@ import { Capability } from './capability';
 import { GithubIssueCapability } from './capabilities/github';
 import { registerLogger, traceError, traceInfo, traceLog, traceVerbose } from './logging';
 import { ListReferencesCapability } from './capabilities/references';
+import { CommitCapability } from './capabilities/commit';
 
 
 export function runServer(port: number, capabilities: Capability[]) {
@@ -106,6 +107,7 @@ export function getCapabilities(): Capability[] {
     // Add your capabilities here
     capabilities.push(new GithubIssueCapability());
     capabilities.push(new ListReferencesCapability());
+    capabilities.push(new CommitCapability());
 
     return capabilities;
 }
