@@ -1,6 +1,6 @@
 {
   "name": "aider-context-server",
-  "displayName": "aider",
+  "displayName": "aider vscode",
   "description": "Context server for aider - AI pair programming in your terminal",
   "version": "0.0.1",
   "publisher": "omribloch",
