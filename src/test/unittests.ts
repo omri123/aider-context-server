@@ -223,12 +223,6 @@ suite('utils-tests', function () {
         assert.equal(utils.formatDiff(diff), expected);
     });
 
-    // test('find files language', function () {
-    //     assert.fail();
-    // });
-
-    // TODO: nicely format the difference between commit message and content.
-
     test('handle newline in the end of file', function () {
         const diff = dedent`
             diff --git a/file-b.txt b/file-b.txt
@@ -260,5 +254,9 @@ suite('utils-tests', function () {
 
         assert.equal(utils.formatDiff(diff), expected);
     });
+
+    // test('find files language', function () {
+    //     assert.fail();
+    // });
 });
 

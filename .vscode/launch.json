@@ -37,7 +37,7 @@
             "name": "unittests",
             "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
             "args": [
-                "--inspect-brk", "--ui", "tdd", "--grep", "format file addition",
+                "--inspect-brk", "--ui", "tdd", "--grep", "handle newline in the end of file",
                 "${workspaceFolder}/out/test/unittests.js"
             ],
             "internalConsoleOptions": "openOnSessionStart"

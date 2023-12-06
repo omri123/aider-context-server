@@ -103,22 +103,24 @@ function timeDifference(current: number, previous: number): string {
     }
 }
 
+const indentString = (str: string, count: number, indent = ' ') =>
+    str.replace(/^/gm, indent.repeat(count));
+
 async function formatCommit(commit: git.Commit, repo: git.Repository): Promise<string> {
     let formatted = '';
     formatted += 'Author: ' + commit.authorName + ' <' + commit.authorEmail + '>\n';
     if (commit.authorDate) {
         formatted += 'Date:   ' + timeDifference(new Date().getTime(), commit.authorDate.getTime()) + '\n';
     }
-    formatted += '\n';
-    formatted += commit.message;
-    formatted += '\n';
+    formatted += 'Commit message:\n';
+    formatted += indentString(commit.message, 4);
+    formatted += '\n\n';
+    formatted += 'Commit changes:\n\n';
 
     const changes = await repo.diffBetween(commit.parents[0], commit.hash);
     for (const change of changes) {
-        // formatted += await repo.show(commit.hash, change.uri.path);
         const diff = await repo.diffBetween(commit.parents[0], commit.hash, change.uri.path)
         formatted += formatDiff(diff);
-        formatted += '\n';
     }
 
     return formatted;

@@ -4,13 +4,13 @@ const HEAD = "<<<<<<< SEARCH\n"
 const DIVIDER = "=======\n"
 const UPDATED = ">>>>>>> REPLACE\n"
 
+
 export function formatDiff(diff: string): string {
     const parsed = parse(diff);
-    let result = '';
-    for (const file of parsed) {
-        result += formatFile(file);
-    }
-    return result;
+    const files = parsed.map((file) => {
+        return formatFile(file);
+    });
+    return files.join("\n");
 }
 
 function chooseFname(file: parse.File): string {
@@ -45,14 +45,11 @@ function chooseFname(file: parse.File): string {
 }
 
 function formatFile(file: parse.File): string {
-    let result = '';
     let fname = chooseFname(file);
-
-    for (const chunk of file.chunks) {
-        result += formatChunk(chunk, fname);
-        result += '\n';
-    }
-    return result;
+    const chunks = file.chunks.map((chunk) => {
+        return formatChunk(chunk, fname);
+    });
+    return chunks.join("\n");
 }
 
 export function formatChunk(chunk: parse.Chunk, fname: string): string {
