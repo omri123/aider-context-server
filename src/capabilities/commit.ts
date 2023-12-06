@@ -3,6 +3,7 @@ import * as git from '../apis/git';
 import { traceError, traceInfo } from '../logging';
 import { Capability } from '../capability';
 import * as difflib from 'difflib';
+import { formatDiff } from '../utils';
 
 
 export class CommitCapability implements Capability {
@@ -115,7 +116,8 @@ async function formatCommit(commit: git.Commit, repo: git.Repository): Promise<s
     const changes = await repo.diffBetween(commit.parents[0], commit.hash);
     for (const change of changes) {
         // formatted += await repo.show(commit.hash, change.uri.path);
-        formatted += await repo.diffBetween(commit.parents[0], commit.hash, change.uri.path)
+        const diff = await repo.diffBetween(commit.parents[0], commit.hash, change.uri.path)
+        formatted += formatDiff(diff);
         formatted += '\n';
     }
 
