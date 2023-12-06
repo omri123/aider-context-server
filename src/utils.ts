@@ -61,6 +61,9 @@ export function formatChunk(chunk: parse.Chunk, fname: string): string {
     let replace = '';
     for (const change of changes) {
         const content = change.content.slice(1) + '\n';
+        if (content === 'No newline at end of file\n') {
+            continue;
+        }
         if (change.type === 'normal') {
             search += content;
             replace += content;
