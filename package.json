@@ -58,12 +58,16 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js && node ./out/test/unittests.js"
   },
   "dependencies": {
     "@octokit/core": "^5.0.2",
+    "@types/dedent": "^0.7.2",
     "@types/difflib": "^0.2.6",
-    "octokit": "^3.1.0"
+    "dedent": "^1.5.1",
+    "octokit": "^3.1.0",
+    "parse-diff": "^0.11.1",
+    "ts-dedent": "^2.2.0"
   },
   "devDependencies": {
     "@types/chai": "^4.3.11",
