@@ -2,6 +2,7 @@
 
 ## [0.2]
 
+- Fix wrong instructions on the README and remove general aider info
 - The following commands are available, including autocomplete:
 
 ```
