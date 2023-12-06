@@ -16,7 +16,6 @@ To better know aider, please take a look at [aider documentation](https://aider.
 - Configure the port number in the extension settings.
 - Run the command `Restart Aider Server` from the command palette.
 - Install and run aider inside your project directory:
-  - aider will autocomplete uris and hash codes.
 
 ```bash
 $ pip install git+https://github.com/omri123/aider@extension-0.2
@@ -43,6 +42,8 @@ Commands additional to the original aider:
 - `/add \commit-<hash>`: Add commit info and content to the chat.
 - `/show <issue|references|commit>`: Show the content of a context item.
 - `/drop <issue|references|commit>`: Remove matching context item from the chat session.
+
+All the commands have autocomplete for URIs, hash codes and symbols.
 
 Please take a look also at the original aider [commands docs](https://aider.chat/docs/commands.html).
 
