@@ -18,7 +18,7 @@ To better know aider, please take a look at [aider documentation](https://aider.
 - Install and run aider inside your project directory:
 
 ```bash
-$ pip install git+https://github.com/omri123/aider@extension-0.2
+$ pip install git+https://github.com/omri123/aider@extension-0.2.1
 $ export OPENAI_API_KEY=your-key-goes-here
 $ aider --port 8080
 
@@ -37,6 +37,8 @@ Added context item "\commit-hash" to the chat
 
 Commands additional to the original aider:
 
+- Scrape a web page and add it to the chat, with `/web` command
+- Edit conversation history with `/hist` and `/edit_history` commands
 - `/add \issue-<uri>`: Add an issue to the chat.
 - `/add \references-<symbol>`: Add a list of symbol references to the chat.
 - `/add \commit-<hash>`: Add commit info and content to the chat.
