@@ -37,7 +37,7 @@ Added context item "\commit-hash" to the chat
 
 Commands additional to the original aider:
 
-- Scrape a web page and add it to the chat, with `/web` command
+- Scrape a web page and add it to the chat, with `/web <uri>` command
 - Edit conversation history with `/hist` and `/edit_history` commands
 - `/add \issue-<uri>`: Add an issue to the chat.
 - `/add \references-<symbol>`: Add a list of symbol references to the chat.
