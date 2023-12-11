@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.2.2]
+
+README fix
+
 ## [0.2.1]
 
 - A new `/web` command to scrape a webpage and add it to the chat.
